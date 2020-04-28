@@ -1,0 +1,37 @@
+version: '3.5'
+
+services:
+  dj-ng-api-db:
+    container_name: dj_ng_api_db
+    image: postgres:12-alpine
+    env_file:
+      - database.env
+    volumes:
+      - dj_ng_api_db_data:/var/lib/postgresql/data/
+
+  dj-ng-api-django:
+    container_name: dj_ng_api_django
+    build: ./backend # Location of Dockerfile
+    env_file:
+      - django.env
+    command: >
+      bash -c "sleep 10s && python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    volumes: # Volume binding
+      - ./backend/dj_ng_api_django:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - dj-ng-api-db
+
+  dj-ng-api-angular:
+    container_name: dj_ng_api_angular
+    build: ./frontend
+    volumes:
+      - './frontend/dj-ng-api-angular:/code/dj-ng-api-angular/src/app'
+    ports:
+      - '4200:4200' # Port mapping
+    command: >
+      bash -c "npm install && ng serve --host 0.0.0.0 --port 4200"
+
+volumes:
+  dj_ng_api_db_data:
