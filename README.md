@@ -10,7 +10,7 @@ To get started, clone and build the project from your command line:
 ~$ docker-compose up --build
 ```
 
-When Docker has started the Angular Live Development Server, in your browser, go to http://localhost:4200/ to see the API. The main page will **Get** a list of Items, a form to **Post** New Items, and the option to **Update or Delete** when an Item is selected.
+When Docker has started the Angular Live Development Server, in your browser, go to http://localhost:4200/ to see the API. The main page will **Get** a list of Items, include a form to **Post** New Items, and the option to **Update or Delete** when an Item is selected.
 
 
 To take the project down:
