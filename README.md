@@ -5,7 +5,7 @@ Requires: [Node.js, npm](https://nodejs.org/) and [Docker](https://www.docker.co
 
 To get started, clone and build the project from your command line:
 ```
-~$ git clone https://github.com/vdaynm/dockerized-django-angular-api-template.git
+~$ git clone https://github.com/dockerized-django-angular-api-template.git
 ~$ cd ./dockerized-django-angular-api-template
 ~$ docker-compose up --build
 ```
